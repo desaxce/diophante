@@ -1,0 +1,49 @@
+\documentclass[11pt] {article}
+
+\usepackage[margin=1in] {geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{stmaryrd}
+
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\PS} {\mathbb{P}}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+%\renewcommand{\qedsymbol}{\filledbox}
+
+%\title{}
+%\date{}
+%\predate{}
+%\postdate{}
+%\author{}
+
+%\maketitle
+
+\textbf{A1879. Quatre facteurs premiers:} Trouver sans l'aide d'un quelconque automate le plus petit entier $n > 0$ tel que l'entier $n^{2} - 79n + 1601$ est égal au produit de quatre facteurs premiers pas nécessairement distincts.\\
+
+\textbf{Solution:} Soit un tel $n$ minimal. Notons $p_{1}$, $p_{2}$, $p_{3}$, $p_{4}$ dans $\PS$ tels que: \[n^{2} - 79n + 1601 = p_{1}p_{2}p_{3}p_{4}\]
+On a alors: \[n = \frac{79 \pm \sqrt{4p_{1}p_{2}p_{3}p_{4} - 163}}{2}\]
+Ainsi, il existe $x$ dans $\N$ tel que: $x^{2} + 163 = 4p_{1}p_{2}p_{3}p_{4}$.\\
+
+Puisque $x$ est impair, en notant $x = 2k+1$, on obtient: $k^{2} + k + 41 = p_{1}p_{2}p_{3}p_{4}$.\\
+Pour $k$ dans $\llbracket 0; 39\rrbracket$, $k^{2} + k + 41$ est toujours premier.\\
+Et les deux premières valeurs de $k$ qui rendent le trinôme composé sont $40$ et $41$:
+\begin{itemize}
+\item pour $k = 40$: $k^{2} + k + 41 = 41^{2}$, et $41$ est un candidat pour les $p_{i}$, $i = 1, 2, 3, 4$;
+\item pour $k = 41$: $k^{2} + k + 41 = 41.43$, et $43$ est un autre candidat.\\
+\end{itemize}
+
+On sait que $p_{1}p_{2}p_{3}p_{4}$ ne peut pas être un carré (car $4p_{1}p_{2}p_{3}p_{4} - x^{2} = 163$, et $163 = 2.81 + 1$ est premier).
+Donc le plus petit produit $p_{1}p_{2}p_{3}p_{4}$ ne peut pas être $41^{4}$.\\
+
+Et le prochain produit potentiel est $41^{3}.43$, ce qui donne $k$ égal à $41^{2} + 40 = 1721$ (on cherchait $k$ congru à $40$ modulo $41$), ou encore $x = 3443$ et $n = 1761$.\\
+
+Réciproquement, avec $n = 1761 = 41.43 - 2$, on vérifie l'égalité voulue.
+
+\end{document}
