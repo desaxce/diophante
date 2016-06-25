@@ -1,3 +1,5 @@
+all: A571.pdf
+
 %.pdf: %.tex
 	pdflatex $<
 	evince $@

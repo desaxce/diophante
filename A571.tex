@@ -13,6 +13,7 @@
 
 \setlength{\parindent}{0cm}
 
+\renewcommand{\arraystretch}{1.5}
 \begin{document}
 
 %\renewcommand{\qedsymbol}{\filledbox}
@@ -25,36 +26,25 @@
 
 %\maketitle
 
-\textbf{A365. Les nombres prodigieux:} Un nombre est appelé prodigieux s'il est divisible par le produit de ses chiffres non nuls écrits en base $10$.\\
-Par exemple l'entier $2016$ est prodigieux car il est divisible par le produit de ses chiffres non nuls égal à 12.\\
-$Q_{1}$ Trouver le plus petit entier prodigieux supérieur à $2016$ qui ne contient aucun chiffre $0$. (*)\\
-$Q_{2}$ Trouver quatre entiers consécutifs prodigieux $> 10$. (**)\\
-$Q_{3}$ Déterminer la longeur maximale d'une suite d'entiers consécutifs prodigieux. (****). Donner un exemple d'une telle suite.\\
+\textbf{A571. À la recherche du gogol:}\\
+$Q_{1}$ Déterminer la plus grande puissance de $10$ obtenue en multipliant des entiers distincts $\leq 2016$. Donner une liste de ces entiers aussi courte que possible.\\
+$Q_{2}$ Déterminer le plus petit entier $n_{0}$ tel qu'on sait trouver des entiers $\leq n_{0}$ dont le produit est égal à un gogol $= 10^{100}$.\\
 
 \textbf{Solution:}\\
-$Q_{1}$ Le premier nombre supérieur à $2016$ à ne pas contenir le chiffre $0$ dans son écriture en base $10$ est $2111$, qui n'est bien sûr pas divisible par $2$. Vient ensuite $2112$, qui lui est bien divisible par $4$ puisque $12$ l'est. Donc le plus petit entier prodigieux supérieur à $2016$ qui ne contient aucun chiffre $0$ est $2112$.\\
+$Q_{1}$ Comme $10 = 2.5$, les seuls éléments pouvant contribuer à une puissance de $10$ sont de la forme $2^{k}5^{l}$, $\left( k,l \right) \in \N^{2}$.\\
 
-$Q_{2}$ En tâtonnant, on trouve par exemple: $1110$ (divisible par $1$), $1111$ (divisible par $1$), $1112$ (pair), $1113$ (divisible par $3$: somme des chiffres égale à $6$, lui-même multiple de $3$).\\
+Notons que la plus grande puissance de $5$ inférieure ou égale à $2016$ est $5^{4} = 625$. Et on peut alors construire le tableau des entiers pouvant contribuer à la puissance de $10$ maximale:\\
 
-$Q_{3}$ On note tout d'abord que la séquence de $0$ à $12$ est de longueur treize et est constituée uniquement de nombres prodigieux. Prouvons que cela correspond à la longueur maximale autorisée.\\
-
-L'ensemble des longueurs des suites consécutives d'entiers prodigieux est majoré par $99$ puisqu'aucune suite ne pourrait contenir un nombre congru à $51$ modulo $100$ (car il n'est pas divisible par $5$).
-Prenons donc une séquence de taille maximale, $S$ (qui existe bien, et est de taille supérieure ou égale à $13$).\\
-
-\textit{Point 1:} Le critère de divisibilité par $3$ nous permet d'affirmer que $S$ ne contient pas deux entiers se terminant par $3$ en base $10$. En effet, si $x = 3 \mod 10$ (et donc aussi $x+10 = 3 \mod 10$), alors $x+10 = x+1 \mod 3$, et on ne peut pas avoir à la fois $x$ et $x+10$ divisibles par $3$.\\
-
-\textit{Point 2:} De même, avec le critère de divisibilité par $9$, on conclut que $S$ ne peux pas contenir deux nombres congrus à $9$ modulo $10$.\\
-
-Remarquons qu'un nombre congru modulo $100$ à: $14$, $25$, $34$, $41$, $54$, $65$, $74$, $81$, $94$ ou $98$ n'est jamais prodigieux. Et l'espace maximal disponible pour $S$ entre deux de ces nombres est au maximum $12$ (entre $81$ et $94$ exclus par exemple), ce qui ne peut pas correspondre au cardinal de $S$.
-
-Notons également, que si l'on commence une séquence d'entiers prodigieux avec un nombre congru à $99$ modulo $100$ alors on aura une suite de taille maximale $9$ (voir \textit{Point 2}).
-
-Reste donc seulement le cas où les éléments de $S$ sont congrus modulo $100$ à des valeurs comprises entre $0$ inclus et $14$ exclus.
-
-Or on ne peut pas mettre un nombre congru à $13$ modulo $100$ dans $S$, car $S$ ne pourrait pas contenir ce nombre moins $10$ (voir \textit{Point 1}).\\
-
-Donc le cardinal maximal de $S$ est $13$.
-Cette valeur est atteinte pour $\llbracket 0; 12 \rrbracket$, mais il en existe d'autres:
-$\llbracket 111111111111111111000; 111111111111111111012 \rrbracket$ (car $111111$ est un multiple de $7$, que $1000$ est un multiple de $8$ et que $111111111111111111$ est divisible par $9$!).
+\begin{center}
+	\begin{tabular}{ccll}
+		Contribution $5/2$	& Puissance de $5$	& Puissance de $2$																						& Entier suivant \\
+		\hline
+		$8/1$				& $5^{4}$				& $2^{0}$, $2^{1}$																						& $5^{4}2^{2} = 2500$ \\
+		$15/10$				& $5^{3}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$															& $5^{3}2^{5} = 4000$ \\
+		$14/21$				& $5^{2}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$											& $5^{2}2^{7} = 3200$ \\
+		$9/36$				& $5^{1}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$						& $5^{1}2^{9} = 2560$ \\
+		$0/55$				& $5^{0}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$, $2^{9}$, $2^{10}$	& $5^{0}2^{11} = 2048$ \\
+	\end{tabular}
+\end{center}
 
 \end{document}
