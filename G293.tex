@@ -1,0 +1,94 @@
+\documentclass[11pt] {article}
+
+\usepackage[margin=1in] {geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{stmaryrd}
+
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\PS} {\mathbb{P}}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+%\renewcommand{\qedsymbol}{\filledbox}
+
+%\title{}
+%\date{}
+%\predate{}
+%\postdate{}
+%\author{}
+
+%\maketitle
+
+\textbf{G293. Un mobilier burenien:}\\
+Au milieu de la grande place du Palais Diophantien, Zig a installé neuf colonnes
+tronquées de marbre blanc aux rayures blanches et noires qui forment les sommets
+d'un ennéagone convexe pas nécessairement régulier et sur lesquels reposent neuf
+sculptures en fer forgé représentant les lettres ADEHINOPT.\\
+Puce qui se place à l'extérieur du polygone, peut ainsi épeler sous un certain
+angle, de gauche à droite, les lettres du mot DIOPHANTE. En continuant de marcher
+autour du polygone, il lit, par exemple, HAPNTOEID puis ETDNIOAPH, etc...\\
+$Q_{1}$ Déterminer le nombre maximum de mots distincts de neuf lettres que Puce
+peut lire quand il fait le tour complet de l'ennéagone.\\
+$Q_{2}$ Fort du succès médiatique rencontré avec cet original mobilier urbain,
+Zig conçoit la même "œuvre d'art" avec un mot de $k$ lettres distinctes placées
+aux sommets d'un $k$-gone convexe qui permet une lecture de $2184$ mots distincts
+au maximum quand on en fait le tour comple. Déterminer $k$.\\
+Pour les plus courageux: quel est le mot choisi par Zig (3 solutions possibles)?\\
+
+\textbf{Solution:}\\
+$Q_{1}$ Prenons le cas d'un $n$-gone convexe avec $n > 3$. Traçons toutes les
+droites définies par deux sommets quelconques du polygone.\\
+
+Soit deux sommets $M$ et $N$. Alors $(MN)$ définit deux demi-plans: et selon le
+demi-plan dans lequel Puce se trouve, il lira soit $M$ avant $N$, soit l'inverse.\\
+Notons qu'en traçant toutes les droites possibles, on coupe le plan en sections
+qui, de part leur définition (intersections de demi-plans), sont de même nombre
+que le nombre de mots que Puce peut lire (on ne prend que les sections extérieures
+au polygone). En effet, être dans une telle section
+du plan permet de savoir pour chaque couple de lettre, laquelle sera lue en
+premier (car on est dans l'un des deux demi-plans définis par ces deux lettres).
+Et si l'on sait comment ordonner les lettres deux à deux, on parviendra à
+fabriquer un unique mot final. Et la réciproque est vraie.\\
+
+Comptons donc les sections du plan. Pour cela commençons par compter le nombre
+de points d'intersections extérieurs au polygone. Soit un quelconque sommet $M$.
+Soit un quelconque autre sommet $N$. Comptons le nombre de droites susceptibles
+de croiser $(MN)$ à l'extérieur du polygone. Notons $k$ et $n-k-2$ les nombres
+de sommets dans chaque demi-plan défini par $(MN)$. Le nombre de points
+d'intersections vaut alors: $\frac{k(k-1)}{2} + \frac{(n-k-2)(n-k-3)}{2}$. Et en
+faisant bouger $N$ parmi les autres sommets du polygone, on trouve que le nombre
+de points d'intersections où le sommet $M$ est impliqué vaut (par symétrie de $k$
+et de $n-k-2$):
+\[ 2 \sum\limits_{k=0}^{n-2} \frac{k(k-1)}{2}\]
+
+Et on peut ensuite retirer $M$ du polygone (puisqu'on a calculé sa contribution
+aux nombres de points extérieurs) et on re-calcule la même valeur pour un 
+$(n-1)$-gone. Finalement on trouve un nombre de points d'intersections extérieurs total:
+\[2\sum\limits_{i=0}^{n-2} \sum\limits_{k=0}^i \frac{k(k-1)}{2} = \frac{n(n-1)(n-2)(n-3)}{12}\]\\
+
+Prenons maintenant un sommet $M$ quelconque du polygone. On a alors $n-1$ droites
+qui passent par ce sommet. Ces $n-1$ droites définissent $n-1$ sections du plan.
+Ainsi, pour chaque sommet, on obtient $n-1$ sections. D'où une contribution
+$n(n-1)$ pour les sommets du polygone.\\
+En ce qui concerne les points extérieurs, chacun d'eux coupe une section déjà
+existante en deux, et apporte une contribution unitaire aux nombres de sections.\\
+
+Par suite, on obtient le nombre total de mots que Puce lira: $\frac{n(n-1)(n^2-5n+18)}{12}$.
+Dans le cas $n=9$, cela donne $324$ mots.\\
+
+
+Note: Comme on a un nombre fini de droites, et une infinité d'angles selon lesquels
+on peut déplacer un point du polygone, on est certain de pouvoir avoir le
+nombre maximal de points d'intersections extérieurs pour une certaine configuration
+du polygone (c'est-à-dire qu'on n'autorise pas quatre sommets distincts du polygone
+à définir deux droites parallèles).\\
+
+$Q_{2}$ Pour $k = 14$, on obtient $2184$ mots. Et les seuls mots de quatorze lettres
+distinctes sont: STYLOGRAPHIQUE, LYMPHOBLASTIQUE et PSYCHODYNAMIQUE.
+\end{document}

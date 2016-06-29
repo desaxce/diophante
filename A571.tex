@@ -36,15 +36,16 @@ $Q_{1}$ Comme $10 = 2.5$, les seuls éléments pouvant contribuer à une puissan
 Notons que la plus grande puissance de $5$ inférieure ou égale à $2016$ est $5^{4} = 625$. Et on peut alors construire le tableau des entiers pouvant contribuer à la puissance de $10$ maximale:\\
 
 \begin{center}
-	\begin{tabular}{ccll}
-		Contribution $5/2$	& Puissance de $5$	& Puissance de $2$																						& Entier suivant \\
+	\begin{tabular}{cccll}
+		Total & Contribution $5/2$	& Puissance de $5$	& Puissance de $2$	& Entier suivant \\
 		\hline
-		$8/1$				& $5^{4}$				& $2^{0}$, $2^{1}$																						& $5^{4}2^{2} = 2500$ \\
-		$15/10$				& $5^{3}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$															& $5^{3}2^{5} = 4000$ \\
-		$14/21$				& $5^{2}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$											& $5^{2}2^{7} = 3200$ \\
-		$9/36$				& $5^{1}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$						& $5^{1}2^{9} = 2560$ \\
-		$0/55$				& $5^{0}$				& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$, $2^{9}$, $2^{10}$	& $5^{0}2^{11} = 2048$ \\
+		$8/1$	&	$8/1$	& $5^{4}$	& $2^{0}$, $2^{1}$	& $5^{4}2^{2} = 2500$ \\
+		$23/11$	&	$15/10$	& $5^{3}$	& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$	& $5^{3}2^{5} = 4000$ \\
+		$37/32$	&	$14/21$	& $5^{2}$	& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$	& $5^{2}2^{7} = 3200$ \\
+		$42/42$	&	$9/36$	& $5^{1}$	& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$	& $5^{1}2^{9} = 2560$ \\
+		$N/A$	&	$0/55$	& $5^{0}$	& $2^{0}$, $2^{1}$, $2^{2}$, $2^{3}$, $2^{4}$, $2^{5}$, $2^{6}$, $2^{7}$, $2^{8}$, $2^{9}$, $2^{10}$	& $5^{0}2^{11} = 2048$ \\
 	\end{tabular}
 \end{center}
 
+Puisqu'on a un déficit de $5$ (comparés aux $2$), on commence par remplir par les plus grandes puissances de $5$. On peut descendre ainsi jusqu'à $5^{1}2^{4}$ inclus, ce qui nous donne une contribution identique pour $5$ et pour $2$: $42$.
 \end{document}
